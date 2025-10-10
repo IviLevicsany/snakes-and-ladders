@@ -1,0 +1,8 @@
+D:\Saját meghajtó\C#\Snakes_and_ladders\bin\Debug\Snakes_and_ladders.exe.config
+D:\Saját meghajtó\C#\Snakes_and_ladders\bin\Debug\Snakes_and_ladders.exe
+D:\Saját meghajtó\C#\Snakes_and_ladders\bin\Debug\Snakes_and_ladders.pdb
+D:\Saját meghajtó\C#\Snakes_and_ladders\obj\Debug\Snakes_and_ladders.csproj.AssemblyReference.cache
+D:\Saját meghajtó\C#\Snakes_and_ladders\obj\Debug\Snakes_and_ladders.csproj.CoreCompileInputs.cache
+D:\Saját meghajtó\C#\Snakes_and_ladders\obj\Debug\Snakes_and_ladders.exe
+D:\Saját meghajtó\C#\Snakes_and_ladders\obj\Debug\Snakes_and_ladders.pdb
+D:\Saját meghajtó\C#\Snakes_and_ladders\obj\Debug\Snakes_and_ladders.exe.config
