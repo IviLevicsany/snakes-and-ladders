@@ -13,49 +13,37 @@ namespace Snakes_and_ladders
         int hely = 1;
         public Program()
         {
-            Console.WriteLine(Letra(12));
+            Console.WriteLine(Kigyo(67));
         }
 
-        public void Kigyo(int i)
+        public int Kigyo(int h)
         {
-            int[] kigyo_hely = {34,16,90,67,23};
-            int[] kigyo_ertek = {8,6,10,12,5};
-            for (int i = 0; i < 5; i++)
+            int[] kigyo_hely = { 34, 16, 90, 67, 23 };
+            int[] kigyo_ertek = { 8, 6, 10, 12, 5 };
+            for (int i = 0; i < kigyo_hely.Length; i++)
             {
-                if (hely == kigyo_hely[i])
+                if (h == kigyo_hely[i])
                 {
-                    hely -= kigyo_ertek[i];
+                    h -= kigyo_ertek[i];
+                    break;
                 }
             }
+            return h;
         }
-        /*public void Letra(int i)
-        {
-            int[] letra_hely = {53,26,71,86,12};
-            int[] letra_ertek = {11,3,15,6,9};
-            foreach (int n in letra_hely)
-                if (i.)
-            {
-                hely += letra_ertek[i];
-            }
-        }
-        */
-        public int Letra(int i)
+        public int Letra(int h)
         {
             int[] letra_hely = { 53, 26, 71, 86, 12 };
             int[] letra_ertek = { 11, 3, 15, 6, 9 };
-
-            for (int index = 0; index < letra_hely.Length; index++)
+            for (int i = 0; i < letra_hely.Length; i++)
             {
-                if (i == letra_hely[index])
+                if (h == letra_hely[i])
                 {
-                    i += letra_ertek[index];
-                    break; // megtaláltuk, nem kell tovább keresni
+                    h += letra_ertek[i];
+                    break;
                 }
             }
-
-            return i;
+            return h;
         }
-
 
         public void Jatek()
         {
@@ -67,8 +55,8 @@ namespace Snakes_and_ladders
                 {
                     hely -= dobas;
                 }
-                Kigyo();
-                Letra();
+                Kigyo(hely);
+                Letra(hely);
                 Console.WriteLine("A te helyed: " + hely);
             }
 
