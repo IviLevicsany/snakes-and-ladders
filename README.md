@@ -1,5 +1,5 @@
 # Kígyók és Létrák
-> (Snakes and Ladders)
+> (Snakes and Ladders) <br>
 > By Norbi, Levi, Szabi
 
 ## Cél:
