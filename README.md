@@ -1,5 +1,6 @@
 # Kígyók és Létrák
 > (Snakes and Ladders)
+> By Norbi, Levi, Szabi
 
 ## Cél:
 A játékosok célja, hogy elsőként elérjék a 100-as mezőt. A játékosok dobókockával haladnak előre. Ha valaki létrára lép, felmászik rajta, ha kígyóra, akkor visszacsúszik.
