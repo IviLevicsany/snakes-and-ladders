@@ -12,8 +12,11 @@ namespace Snakes_and_ladders
         Random rnd = new Random();
         int p1_hely = 0;
         int p2_hely = 0;
+        string p1_nev = "";
+        string p2_nev = "";
         public Program()
         {
+            Bevezeto();
             Jatek();
         }
 
@@ -26,11 +29,17 @@ namespace Snakes_and_ladders
                 if (h == kigyo_hely[i])
                 {
                     h -= kigyo_ertek[i];
-                    Console.WriteLine($"{kigyo_hely[i]} -as helyen kígyóra léptél, {h} -ra csúsztál le!");
+                    if (kigyo_hely[i] == p1_hely)
+                    {
+                        Console.WriteLine($"{kigyo_hely[i]} -as helyen {p1_nev} kígyóra lépett, {h} -ra csúszott le!");
+                    }
+                    else if (kigyo_hely[i] == p2_hely)
+                    {
+                        Console.WriteLine($"{kigyo_hely[i]} -as helyen {p2_nev} kígyóra lépett, {h} -ra csúszott le!");
+                    }
                     break;
                 }
             }
-            
             return h;
         }
         public int Letra(int h)
@@ -42,16 +51,40 @@ namespace Snakes_and_ladders
                 if (h == letra_hely[i])
                 {
                     h += letra_ertek[i];
-                    Console.WriteLine($"{letra_hely[i]} -as helyen létrára léptél, {h} -ra másztál fel!");
+                    if (letra_hely[i] == p1_hely)
+                    {
+                        Console.WriteLine($"{letra_hely[i]} -as helyen {p1_nev} létrára lépett, {h} -ra mászott fel!");
+                    }
+                    else if (letra_hely[i] == p2_hely)
+                    {
+                        Console.WriteLine($"{letra_hely[i]} -as helyen {p2_nev} létrára lépett, {h} -ra mászott fel!");
+                    }
                     break;
                 }
             }
             return h;
         }
 
+        public void Bevezeto()
+        {
+            Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("Snakes and Ladders / Kígyók és létrák:");
+            Console.WriteLine("A játek lényege az, hogy valamelyik játékos elérje a 100. helyet.");
+            Console.WriteLine("A két játékos egy 12-es dobókockával lép előre.");
+            Console.WriteLine("A pályán vannak létrák, amikre ha rálépsz felmászol a tetejére és vannak kígyók, amikre ha rálépsz lecsúszol az aljára.");
+            Console.WriteLine("A két játékosnak meg kell adniuk a nevüket, majd utánna a gombnyomással halad tovább a játék!");
+            Console.WriteLine("Jó szórakozást kívánünk!");
+            Console.WriteLine("Készitette: Levi, Norbi, Szabi");
+            Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+        }
+
         public void Jatek()
         {
-            
+            Console.Write("Add meg az első játékos nevét: ");
+            p1_nev = Console.ReadLine();
+            Console.Write("Add meg a második játékos nevét: ");
+            p2_nev = Console.ReadLine();
+
             while (p1_hely < palya && p2_hely < palya)
             {
                 int dobas1 = rnd.Next(1, 13);
@@ -61,21 +94,21 @@ namespace Snakes_and_ladders
 
                 p1_hely = Kigyo(p1_hely);
                 p1_hely = Letra(p1_hely);
-                Console.WriteLine("1. játékos helye: " + p1_hely);
+                Console.WriteLine(p1_nev + " helye: " + p1_hely);
 
                 p2_hely = Kigyo(p2_hely);
                 p2_hely = Letra(p2_hely);
-                Console.WriteLine("2. játékos helye: " + p2_hely);
+                Console.WriteLine(p2_nev + " helye: " + p2_hely);
 
                 if (p1_hely >= palya)
                 {
                     p1_hely = 100;
-                    Console.WriteLine("1. játékos nyert!");
+                    Console.WriteLine(p1_nev + " nyert!");
                 }
                 else if (p2_hely >= palya)
                 {
                     p2_hely = 100;
-                    Console.WriteLine("2. játékos nyert!");
+                    Console.WriteLine(p2_nev + " nyert!");
                 }
                 Console.WriteLine();
                 Console.ReadKey(intercept: true);
