@@ -98,15 +98,27 @@ namespace Snakes_and_ladders
         public void Jatek()
         {
             Console.Write("Add meg az első játékos nevét: ");
+            while (Console.ReadLine() == "") Console.Write("Nem adtál meg nevet, add meg újra: ");
             p1_nev = Console.ReadLine();
             Console.Write("Add meg a második játékos nevét: ");
+            while (Console.ReadLine() == "") Console.Write("Nem adtál meg nevet, add meg újra: ");
             p2_nev = Console.ReadLine();
+            
             p1_hely = 0;
             p2_hely = 0;
 
-            Console.Write("Hányas dobókockával szertnél dobni? (add meg a számot) : ");
-            Int32.TryParse(Console.ReadLine(), out int kocka);
-
+            int kocka = 0;
+            bool siker = false;
+            while (!siker)
+            {
+                Console.Write("Hányas dobókockával szertnél dobni? (add meg a számot) : ");
+                if (Int32.TryParse(Console.ReadLine(), out kocka)) siker = true;
+                else
+                {
+                    Console.Write("Nem számot adtál meg, add meg újra: ");
+                }
+            }
+            
             while (p1_hely < palya && p2_hely < palya)
             {
                 int dobas1 = rnd.Next(1, kocka+1);
