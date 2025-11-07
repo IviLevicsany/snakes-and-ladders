@@ -64,10 +64,27 @@ namespace Snakes_and_ladders
             }
             return h;
         }
-
+        
         public void Bevezeto()
         {
             Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
+            Console.WriteLine("           /^\\/^\\");
+            Console.WriteLine("         _|__|  O|");
+            Console.WriteLine("\\/     /~     \\_/ \\");
+            Console.WriteLine(" \\____|__________/  \\");
+            Console.WriteLine("        \\_______      \\");
+            Console.WriteLine("                `\\     \\                 \\");
+            Console.WriteLine("                  |     |                  \\");
+            Console.WriteLine("                 /      /                    \\");
+            Console.WriteLine("                /     /                       \\");
+            Console.WriteLine("              /      /                         \\ \\");
+            Console.WriteLine("             /     /                            \\  \\");
+            Console.WriteLine("           /     /             _----_            \\   \\");
+            Console.WriteLine("          /     /           _-~      ~-_         |   |");
+            Console.WriteLine("         (      (        _-~    _--_    ~-_     _/   |");
+            Console.WriteLine("          \\      ~-____-~    _-~    ~-_    ~-_-~    /");
+            Console.WriteLine("            ~-_           _-~          ~-_       _-~");
+            Console.WriteLine("               ~--______-~                ~-___-~");
             Console.WriteLine("Snakes and Ladders / Kígyók és létrák:");
             Console.WriteLine("A játek lényege az, hogy valamelyik játékos elérje a 100. helyet.");
             Console.WriteLine("A két játékos egy 12-es dobókockával lép előre.");
@@ -84,11 +101,16 @@ namespace Snakes_and_ladders
             p1_nev = Console.ReadLine();
             Console.Write("Add meg a második játékos nevét: ");
             p2_nev = Console.ReadLine();
+            p1_hely = 0;
+            p2_hely = 0;
+
+            Console.Write("Hányas dobókockával szertnél dobni? (add meg a számot) : ");
+            Int32.TryParse(Console.ReadLine(), out int kocka);
 
             while (p1_hely < palya && p2_hely < palya)
             {
-                int dobas1 = rnd.Next(1, 13);
-                int dobas2 = rnd.Next(1, 13);
+                int dobas1 = rnd.Next(1, kocka+1);
+                int dobas2 = rnd.Next(1, kocka+1);
                 p1_hely += dobas1;
                 p2_hely += dobas2;
 
@@ -104,17 +126,33 @@ namespace Snakes_and_ladders
                 {
                     p1_hely = 100;
                     Console.WriteLine(p1_nev + " nyert!");
+                    Restart();
                 }
                 else if (p2_hely >= palya)
                 {
                     p2_hely = 100;
                     Console.WriteLine(p2_nev + " nyert!");
+                    Restart();
+
                 }
-                Console.WriteLine();
-                Console.ReadKey(intercept: true);
+                else
+                {
+                    Console.WriteLine();
+                    Console.ReadKey(intercept: true);
+                }
             }
             
 
+        }
+
+        public void Restart()
+        {
+            Console.WriteLine("Nyomd meg az 'i' gombot ha újra szertnéd kezdeni");
+            ConsoleKeyInfo gomb = Console.ReadKey(intercept: true);
+            if (gomb.Key == ConsoleKey.I)
+            {
+                Jatek();
+            }
         }
         static void Main(string[] args)
         {
