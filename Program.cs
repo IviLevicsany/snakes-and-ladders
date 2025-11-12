@@ -99,17 +99,30 @@ namespace Snakes_and_ladders
         {
             Console.Write("Add meg az első játékos nevét: ");
             p1_nev = Console.ReadLine();
+            
             Console.Write("Add meg a második játékos nevét: ");
-            p2_nev = Console.ReadLine();
+            bool siker = false;
+            while (!siker)
+            {
+                p2_nev = Console.ReadLine();
+                if (p2_nev != p1_nev)
+                {
+                    siker = true;
+                }
+                else Console.Write("Ugyan azt a nevet adtad meg, adj meg egy másikat: ");
+            }
+            
+            
             
             p1_hely = 0;
             p2_hely = 0;
 
             int kocka = 0;
-            bool siker = false;
+            Console.Write("Hányas dobókockával szertnél dobni? (add meg a számot) : ");
+            siker = false;
             while (!siker)
             {
-                Console.Write("Hányas dobókockával szertnél dobni? (add meg a számot) : ");
+                
                 if (Int32.TryParse(Console.ReadLine(), out kocka)) siker = true;
                 else
                 {
