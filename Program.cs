@@ -98,10 +98,8 @@ namespace Snakes_and_ladders
         public void Jatek()
         {
             Console.Write("Add meg az első játékos nevét: ");
-            while (Console.ReadLine() == "") Console.Write("Nem adtál meg nevet, add meg újra: ");
             p1_nev = Console.ReadLine();
             Console.Write("Add meg a második játékos nevét: ");
-            while (Console.ReadLine() == "") Console.Write("Nem adtál meg nevet, add meg újra: ");
             p2_nev = Console.ReadLine();
             
             p1_hely = 0;
