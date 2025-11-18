@@ -31,11 +31,11 @@ namespace Snakes_and_ladders
                     h -= kigyo_ertek[i];
                     if (kigyo_hely[i] == p1_hely)
                     {
-                        Console.WriteLine($"{kigyo_hely[i]} -as helyen {p1_nev} kígyóra lépett, {h} -ra csúszott le!");
+                        Console.WriteLine($"{kigyo_hely[i]} -s helyről {p1_nev} egy kígyón {h} -re csúszott le!");
                     }
                     else if (kigyo_hely[i] == p2_hely)
                     {
-                        Console.WriteLine($"{kigyo_hely[i]} -as helyen {p2_nev} kígyóra lépett, {h} -ra csúszott le!");
+                        Console.WriteLine($"{kigyo_hely[i]} -s helyről {p2_nev} egy kígyón {h} -re csúszott le!");
                     }
                     break;
                 }
@@ -53,11 +53,11 @@ namespace Snakes_and_ladders
                     h += letra_ertek[i];
                     if (letra_hely[i] == p1_hely)
                     {
-                        Console.WriteLine($"{letra_hely[i]} -as helyen {p1_nev} létrára lépett, {h} -ra mászott fel!");
+                        Console.WriteLine($"{letra_hely[i]} -es helyről {p1_nev} egy létrán {h} -re mászott fel!");
                     }
                     else if (letra_hely[i] == p2_hely)
                     {
-                        Console.WriteLine($"{letra_hely[i]} -as helyen {p2_nev} létrára lépett, {h} -ra mászott fel!");
+                        Console.WriteLine($"{letra_hely[i]} -es helyről {p2_nev} egy létrán {h} -re mászott fel!");
                     }
                     break;
                 }
@@ -112,23 +112,25 @@ namespace Snakes_and_ladders
                 else Console.Write("Ugyan azt a nevet adtad meg, adj meg egy másikat: ");
             }
             
-            
-            
             p1_hely = 0;
             p2_hely = 0;
 
             int kocka = 0;
-            Console.Write("Hányas dobókockával szertnél dobni? (add meg a számot) : ");
+            Console.Write("Hányas dobókockával szertnél dobni? (add meg a számot 4 és 24 között): ");
             siker = false;
             while (!siker)
             {
-                
-                if (Int32.TryParse(Console.ReadLine(), out kocka)) siker = true;
-                else
+                if (Int32.TryParse(Console.ReadLine(), out kocka))
                 {
-                    Console.Write("Nem számot adtál meg, add meg újra: ");
+                    if (kocka < 4 || kocka > 24)
+                    {
+                        Console.Write("Nem adtál meg 4 és 24 közötti számot, add meg újra:");
+                    }
+                    else siker = true;
                 }
+                else Console.Write("Nem számot adtál meg, add meg újra: ");
             }
+            Console.WriteLine($"\n{kocka} -es kockával fognak a játékosok dobni");
             
             while (p1_hely < palya && p2_hely < palya)
             {
@@ -137,13 +139,17 @@ namespace Snakes_and_ladders
                 p1_hely += dobas1;
                 p2_hely += dobas2;
 
+                Console.WriteLine($"{p1_nev} {dobas1} -est dobott, így {p1_hely} -re lépett");
                 p1_hely = Kigyo(p1_hely);
                 p1_hely = Letra(p1_hely);
-                Console.WriteLine(p1_nev + " helye: " + p1_hely);
+                
+                //Console.WriteLine(p1_nev + " helye: " + p1_hely);
 
+                Console.WriteLine($"{p2_nev} {dobas2} -est dobott, így {p2_hely} -re lépett");
                 p2_hely = Kigyo(p2_hely);
                 p2_hely = Letra(p2_hely);
-                Console.WriteLine(p2_nev + " helye: " + p2_hely);
+                
+                //Console.WriteLine(p2_nev + " helye: " + p2_hely);
 
                 if (p1_hely >= palya)
                 {
@@ -156,7 +162,6 @@ namespace Snakes_and_ladders
                     p2_hely = 100;
                     Console.WriteLine(p2_nev + " nyert!");
                     Restart();
-
                 }
                 else
                 {
@@ -164,8 +169,6 @@ namespace Snakes_and_ladders
                     Console.ReadKey(intercept: true);
                 }
             }
-            
-
         }
 
         public void Restart()
@@ -177,11 +180,11 @@ namespace Snakes_and_ladders
                 Jatek();
             }
         }
+
         static void Main(string[] args)
         {
             new Program();
             Console.ReadKey();
         }
-
     }  
 }
