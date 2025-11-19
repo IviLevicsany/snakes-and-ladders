@@ -143,14 +143,10 @@ namespace Snakes_and_ladders
                 p1_hely = Kigyo(p1_hely);
                 p1_hely = Letra(p1_hely);
                 
-                //Console.WriteLine(p1_nev + " helye: " + p1_hely);
-
                 Console.WriteLine($"{p2_nev} {dobas2} -est dobott, így {p2_hely} -re lépett");
                 p2_hely = Kigyo(p2_hely);
                 p2_hely = Letra(p2_hely);
                 
-                //Console.WriteLine(p2_nev + " helye: " + p2_hely);
-
                 if (p1_hely >= palya)
                 {
                     p1_hely = 100;
@@ -187,4 +183,5 @@ namespace Snakes_and_ladders
             Console.ReadKey();
         }
     }  
+
 }
