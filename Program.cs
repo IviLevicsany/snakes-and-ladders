@@ -64,7 +64,7 @@ namespace Snakes_and_ladders
             }
             return h;
         }
-        
+
         public void Bevezeto()
         {
             Console.WriteLine("------------------------------------------------------------------------------------------------------------------------");
@@ -99,8 +99,11 @@ namespace Snakes_and_ladders
         {
             Console.Write("Add meg az első játékos nevét: ");
             p1_nev = Console.ReadLine();
-            
+            while (p1_nev == null)
+                Console.WriteLine("Nem adtál meg nevet, próbáld újra: ");
             Console.Write("Add meg a második játékos nevét: ");
+            while (p2_nev == null)
+                Console.WriteLine("Nem adtál meg nevet, próbáld újra: ");
             bool siker = false;
             while (!siker)
             {
@@ -111,7 +114,7 @@ namespace Snakes_and_ladders
                 }
                 else Console.Write("Ugyan azt a nevet adtad meg, adj meg egy másikat: ");
             }
-            
+
             p1_hely = 0;
             p2_hely = 0;
 
@@ -131,22 +134,22 @@ namespace Snakes_and_ladders
                 else Console.Write("Nem számot adtál meg, add meg újra: ");
             }
             Console.WriteLine($"\n{kocka} -es kockával fognak a játékosok dobni");
-            
+
             while (p1_hely < palya && p2_hely < palya)
             {
-                int dobas1 = rnd.Next(1, kocka+1);
-                int dobas2 = rnd.Next(1, kocka+1);
+                int dobas1 = rnd.Next(1, kocka + 1);
+                int dobas2 = rnd.Next(1, kocka + 1);
                 p1_hely += dobas1;
                 p2_hely += dobas2;
 
                 Console.WriteLine($"{p1_nev} {dobas1} -est dobott, így {p1_hely} -re lépett");
                 p1_hely = Kigyo(p1_hely);
                 p1_hely = Letra(p1_hely);
-                
+
                 Console.WriteLine($"{p2_nev} {dobas2} -est dobott, így {p2_hely} -re lépett");
                 p2_hely = Kigyo(p2_hely);
                 p2_hely = Letra(p2_hely);
-                
+
                 if (p1_hely >= palya)
                 {
                     p1_hely = 100;
@@ -182,6 +185,5 @@ namespace Snakes_and_ladders
             new Program();
             Console.ReadKey();
         }
-    }  
-
+    }
 }
